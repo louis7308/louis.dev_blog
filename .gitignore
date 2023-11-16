@@ -72,3 +72,6 @@ yarn-error.log
 ## obsidian
 .obsidian/
 contents/posts/.obsidian
+
+## StudyNote
+contents/StudyNote/
