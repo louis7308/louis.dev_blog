@@ -73,5 +73,9 @@ yarn-error.log
 .obsidian/
 contents/posts/.obsidian
 
+## index Template
+contents/posts/index-template.md
+
 ## StudyNote
 contents/StudyNote/
+
