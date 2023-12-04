@@ -22,7 +22,7 @@ DTO : 데이터 전달용
 이제 더 자세히 알아가봅시다!
 
 ## DTO란?
-![[Pasted image 20231127151530.png]]
+![](https://i.imgur.com/QKZEqmE.png)
 
 Data Transfer Object로서 데이터를 담아서 전달하기 위해 사용하는 객체입니다.
 주로 사용되는 예는 **계층간 데이터를 전달**하기 위할 때 사용됩니다.
@@ -35,7 +35,7 @@ Setter를 가지고 있는 DTO는 가변 DTO라고 부를 수 있습니다.
 
 ### 그렇다면 왜 Dto를 사용해야 할까요?
 저희가 만약을 한번 가장 해보겠습니다.
-![](https://i.imgur.com/QKZEqmE.png)
+![](https://i.imgur.com/1C60hg0.png)
 이러한 요청에 DTO가 아닌 Domain(Entity)를 요청과 응답으로 처리한다고 생각해봅시다.
 저희는 프로젝트를 진행하는 과정중 View단에 비즈니스 로직이 자주 바뀌는 것을 경험해보신적이 있으실겁니다.
 
