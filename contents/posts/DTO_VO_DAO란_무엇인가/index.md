@@ -61,7 +61,49 @@ Value Object
 동일은 객체의 참조 주소값이 동일 할 때 사용하는 것이고,
 동등은 객체의 값이 같을 때 사용하기 때문에 동등이라는 표현을 사용하였습니다.
 
+## DAO란
+데이터 사용기능 담당 클래스입니다.
+DB데이터 조회나, 수정, 입력, 삭제와 같은 로직을 처리하기 위해 사용됩니다.
+DAOInterface/DAOImplement로 구분지어 구현 분리하며 개발합니다.
+DB의 **Data에 접근하는 객체**이면서 **비즈니스 로직과, DB Access 로직을 분리**하기 위해 사용됩니다.
+만약 Mybatis연동 때처럼 Interface만 필요한 경우 그냥 DAO 라고 명시할 수 있습니다.
 
+-> Mybatis 예시로 코드를 가져와보겠습니다.
+```kotlin
+@MyMapper
+interface UserMapper {
+	fun selectUserById(userId: String): UserVO
 
+	fun insertUser(userVO: UserVO)
 
+	...
+}
+
+class UserDaoImplMapper(
+	private val userMapper: UserMapper
+) : UserDao {
+	@Override
+	fun insert(user: UserVO) {
+		userMapper.insertUser(user)
+	}
+
+	...
+}
+```
+위 예제에서 UserMapper는 DAO의 인터페이스 라고 보기는 조금 애매합니다.
+하지만 UserDaoImplMapper는 DAO 인터페이스 메소드를 구현하고 데이터 액세스 작업을 하는 DAO가 맞습니다.
+
+-> ORM 예시로 코드를 가져와 보겠습니다.
+![](https://i.imgur.com/IlYx8gH.png)
+```kotlin
+interface CustomerRepository : CrudRepository<Customer, Long> {}
+
+CrudRepository -> SimpleJpaRepository(구현체)
+```
+현재 CustomerRepository가 CrudRepository를 인터페이스를 확장 받는데 이 인터페이스가 구현 되어진 SimpleJpaRepository에서 DAO 코드가 구현 되어져 있기 때문에 우리는 ORM을 사용한다면 알아서 DAO가 적용된 CrudRepository만 상속 받아 사용하면 되어서 편리하다.
+
+### 정리
+DTO는 유연한 데이터 전송을 표현하고, 
+VO는 추가 논리로 불변 값을 표현하며, 
+DAO는 데이터 액세스 논리를 분리하여 소프트웨어 개발에서 모듈식이며 유지 관리 가능한 아키텍처를 촉진합니다.
 
